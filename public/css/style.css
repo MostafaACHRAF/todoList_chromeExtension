@@ -1,20 +1,44 @@
 body {
 	margin: 0;
-	font-family: Calibri;
+	/* background: #0cebeb;
+	    background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);
+	    background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); */
+
+    background: #800080;
+    background: -webkit-linear-gradient(to right, #ffc0cb, #800080);
+    background: linear-gradient(to right, #ffc0cb, #800080);
+    width: 800px;
+
 }
 
-header {
-	background: #03a9f4;
-	text-align: center;
+.mainContainer {
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: 0px 0px 20px 0px black;
+	width: 80%;
+	margin: auto;
+	padding: 20px;
 }
 
-.logo {
+.delBtn {
+	margin-right: 20px;
+}
+
+.timeBadge {
+	padding: 5px;
+	background: #56ccf2;
 	color: white;
-	font-size: 40px;
-	font-weight: bold;
+	border-radius: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 20px;
 }
 
-header input {
-	font-size: 20px;
-	margin: 20px 0px;
+.timer {
+	padding: 5px;
+	color: white;
+	font-size: 12px;
+	border-radius: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background: #009688; /*56ccf2*/
 }
