@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
+import $ from 'jquery';
 
 class TodoItem extends Component {
 
@@ -9,6 +10,10 @@ class TodoItem extends Component {
             isCompleted: false,
             isTimerStarted: false
         }
+    }
+
+    componentDidMount() {
+        console.log($('.card-panel'));
     }
 
     render() {
@@ -37,6 +42,15 @@ class TodoItem extends Component {
     }
 
     handelTimerStatus(status) {
+
+        if (status) {
+            $("#task" + this.props.id).parent().removeClass("red");
+            $("#task" + this.props.id).parent().addClass("yellow");
+        } else {
+            $("#task" + this.props.id).parent().removeClass("yellow");
+            $("#task" + this.props.id).parent().addClass("red");
+        }
+
         this.setState({isTimerStarted: status});
     }
    
@@ -46,13 +60,20 @@ class TodoItem extends Component {
 
         let timeStyle = this.state.isTimerStarted ? "timer" : "timeBadge";
 
-        
-
         const taskStyle = {
             textDecoration: isCompleted ? 'line-through' : '',
             cursor: 'pointer',
             display: 'inline-block',
-            float: 'left'
+            float: 'left',
+            color: 'white'
+        }
+
+        if (isCompleted) {
+            $("#task" + this.props.id).parent().removeClass("red");
+            $("#task" + this.props.id).parent().addClass("teal");
+        } else {
+            $("#task" + this.props.id).parent().removeClass("teal");
+            $("#task" + this.props.id).parent().addClass("red");
         }
 
         const timeToDisplay = this.renderTaskTime(time);
@@ -60,11 +81,11 @@ class TodoItem extends Component {
         return(
             <div className="row">
                 <div className="col m12 s12">
-                    <div className="card-panel teal hoverable valign-wrapper">
+                    <div className="card-panel red hoverable valign-wrapper">
                         <a className="btn-floating waves-effect waves-light blue left delBtn" onClick={this.props.removeTask.bind(this, this.props.title)} data-position="top" data-delay="50" data-tooltip="I am a tooltip" >
                             <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Delete this task">clear</i>
                         </a>
-                        <h5 style={taskStyle} onClick={ this.props.toggleTask.bind(this, title) } >
+                        <h5 id={'task' + this.props.id} style={taskStyle} onClick={ this.props.toggleTask.bind(this, title) } >
                             { title }
                             <span className={timeStyle}><i className="material-icons">timer</i> { timeToDisplay }</span>
                         </h5>

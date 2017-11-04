@@ -8,7 +8,7 @@ class TodoList extends Component {
         return(
             this.props.tasks.map((t, index) => {
                 return(
-                    <TodoItem key={index} title={t.title} time={t.time} isCompleted={t.isCompleted} toggleTask={this.props.toggleTask} removeTask={this.props.removeTask} />
+                    <TodoItem id={index} key={index} title={t.title} time={t.time} isCompleted={t.isCompleted} toggleTask={this.props.toggleTask} removeTask={this.props.removeTask} />
                 )
             })
         );

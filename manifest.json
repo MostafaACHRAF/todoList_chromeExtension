@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Todo List",
+  "description": "This extension allows the user to manage what he will do",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_title": "Todo List",
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "http://*/*",
+    "https://*/*",
+    "notifications"
+  ]
+}
