@@ -25,10 +25,15 @@ class TimeTodo extends Component {
 
     render() {
         return(
-            <div>
-                <input type="text" value={this.state.taskTimer + ' min'} disabled /> 
-                <a className="btn" onClick={this.incrementTimer.bind(this)}><i className="material-icons">expand_less</i></a>
-                <a className="btn" onClick={this.decrementTimer.bind(this)}><i className="material-icons">expand_more</i></a>
+            <div className="row">
+                <div className="col m7">
+                    <input className="createTimeInput" type="text" value={this.state.taskTimer + ' min'} disabled /> 
+                </div>
+                <div className="col m5">
+                    <a style={{"display": "block"}} onClick={this.incrementTimer.bind(this)}><i className="material-icons udBtn">expand_less</i></a>
+                    <a style={{"display": "block"}} onClick={this.decrementTimer.bind(this)}><i className="material-icons udBtn">expand_more</i></a>
+                </div>
+                
             </div>
         );
     }

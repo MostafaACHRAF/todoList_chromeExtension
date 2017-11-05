@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TimeTodo from './TimeTodo';
+import Notifications, { notify } from 'react-notify-toast';
 
 class CreateTodoItem extends Component {
 
@@ -58,7 +59,8 @@ class CreateTodoItem extends Component {
 
     renderErrorMsg() {
         if (this.state.err) {
-            return <div style={{color: 'red'}}>{this.state.err}</div>
+            //return <div style={{color: 'red'}}>{this.state.err}</div>
+            notify.show("Please enter a valid task !", "error");
         }
     }
 

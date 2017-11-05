@@ -25,10 +25,8 @@ body {
 }
 
 .addBtn {
-	
-	margin-top: 30px;
+	margin-top: 0px;
 	margin-bottom: 20px;
-	
 }
 
 .timeBadge {
@@ -83,7 +81,7 @@ h5 {
 	text-transform:capitalize;
 }
 
-.createTaskInput {
+.createTaskInput,.createTimeInput  {
 	font-size: 25px !important;
 }
 
@@ -94,3 +92,15 @@ h5 {
 	text-overflow: ellipsis;
 }
 
+.udBtn {
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.udBtn:hover {
+	cursor: pointer;
+	background: teal;
+	width: 24px;
+	border-radius: 25px;
+	color: white;
+}
