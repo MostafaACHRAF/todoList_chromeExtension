@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 class Timer extends Component {
 
@@ -50,36 +51,32 @@ class Timer extends Component {
     startTimer() {
         this.compteur = setInterval(() => this.runTimer(), 1000);
         this.setState({isStarted: true});
-        this.props.handelTimerStatus(true);
+        this.props.handelTimerStatus(true, this.props.taskId);
     }
 
     stopTimer() {
         clearInterval(this.compteur);
         this.setState({isStarted: false});
-        this.props.handelTimerStatus(false);
+        this.props.handelTimerStatus(false, this.props.taskId);
     }
 
     renderTimerButtons() {
-        if (this.state.isStarted === true) {
+        if (!this.props.taskCompleted) {
+            if (this.state.isStarted === true) {
+                return(
+                    <a id={'pauseBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue" >
+                        <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Stop the timer" onClick={this.stopTimer.bind(this)}>pause</i>
+                    </a>
+                );
+            }
+
             return(
-                <a className="btn-floating btn-large waves-effect waves-light blue" >
-                    <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Stop the timer" onClick={this.stopTimer.bind(this)}>pause</i>
+                <a id={'startBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue pulse" onClick={this.startTimer.bind(this)} >
+                    <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Start the timer">play_arrow</i>
                 </a>
             );
         }
-
-        return(
-            <a className="btn-floating btn-large waves-effect waves-light blue pulse" onClick={this.startTimer.bind(this)} >
-                <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Start the timer">play_arrow</i>
-            </a>
-        );
-
     }
-
-    /*sendTimerStatus() {
-        this.props.handelTimerStatus(true);
-    }*/
-
 
     render() {
 
@@ -88,11 +85,14 @@ class Timer extends Component {
         if (this.state.isStarted) {
             timerStyle = "timeBadge";
         }
+
+        if (this.props.taskCompleted) {
+            timerStyle = "timerIfTaskCompleted"
+        }
         
             
         return(
-            <div>
-                {/*<h5 className="timer">{this.state.hours + 'H' + this.state.minutes + 'min' + this.state.secondes + 's'}</h5>*/}
+            <div style={{"right": "70px", "position": "absolute"}}>
                 <span className={timerStyle}>{this.state.hours + 'H' + this.state.minutes + 'min' + this.state.secondes + 's'}</span>
                 {this.renderTimerButtons()}
             </div>

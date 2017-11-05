@@ -15,11 +15,12 @@ class CreateTodoItem extends Component {
         return(
             <div>
                 <form onSubmit={this.handleCreateTask.bind(this)}>
-                    <input type="text" placeholder="What do i need to do ?" ref="createInput" />
-                    <button className="waves-effect waves-light btn-large">ADD</button>
+                    <input className="createTaskInput" type="text" placeholder="What do i need to do ?" ref="createInput" />
+                    <TimeTodo taskTimer={this.taskTimer.bind(this)} />
+                    <button className="waves-effect waves-light btn-large addBtn ">ADD new task</button>
                     {this.renderErrorMsg()}
                 </form>
-                <TimeTodo taskTimer={this.taskTimer.bind(this)} />
+                
             </div>
         );
     }

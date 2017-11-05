@@ -4,7 +4,6 @@ import TodoItem from './TodoItem';
 class TodoList extends Component {
 
     renderTodoItem() {
-
         return(
             this.props.tasks.map((t, index) => {
                 return(
@@ -17,7 +16,7 @@ class TodoList extends Component {
     render() {
         return(
             <div>
-                <ul>{ this.renderTodoItem() }</ul>
+                <ul class="collapsible" data-collapsible="accordion">{ this.renderTodoItem() }</ul>
             </div>
         );
     }
