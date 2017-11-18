@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TimeTodo from './TimeTodo';
-import Notifications, { notify } from 'react-notify-toast';
+import { notify } from 'react-notify-toast';
 
 class CreateTodoItem extends Component {
 
@@ -15,11 +15,20 @@ class CreateTodoItem extends Component {
     render() {
         return(
             <div>
+                <div className="switch right promodoContainer">
+                    <label>
+                        <span style={{"fontSize":"20px"}}>Promodo Technique</span>
+                        <input type="checkbox" />
+                        <span className="lever"></span>
+                    </label>
+                </div>
+
                 <form onSubmit={this.handleCreateTask.bind(this)}>
                     <input className="createTaskInput" type="text" placeholder="What do i need to do ?" ref="createInput" />
                     <TimeTodo taskTimer={this.taskTimer.bind(this)} />
                     <button className="waves-effect waves-light btn-large addBtn ">ADD new task</button>
                     {this.renderErrorMsg()}
+                    <div id="txt"></div>
                 </form>
                 
             </div>
@@ -59,7 +68,6 @@ class CreateTodoItem extends Component {
 
     renderErrorMsg() {
         if (this.state.err) {
-            //return <div style={{color: 'red'}}>{this.state.err}</div>
             notify.show("Please enter a valid task !", "error");
         }
     }

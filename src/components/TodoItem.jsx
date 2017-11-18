@@ -46,17 +46,19 @@ class TodoItem extends Component {
         if (status) {
             $("#task" + this.props.id).parent().removeClass("red");
             $("#task" + this.props.id).parent().addClass("yellow");
-            //if (this.props.id !== taskId) {
-                console.log(taskId);
-            //}
+            $(".ctrlBtn:not(#ctrlBtn" + taskId + ")").each(function(btn) {
+                $(this).addClass("hide");
+            });
         } else {
             $("#task" + this.props.id).parent().removeClass("yellow");
             $("#task" + this.props.id).parent().addClass("red");
+            $(".ctrlBtn:not(#ctrlBtn" + taskId + ")").each(function(btn) {
+                $(this).removeClass("hide");
+            });
         }
 
         this.setState({isTimerStarted: status});
     }
-   
 
     renderTaskSection() {
         const {title, time, isCompleted} = this.props;

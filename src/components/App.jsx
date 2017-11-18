@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoList from './TodoList';
 import CreateTodoItem from './createTodoItem';
 import Notifications, { notify } from 'react-notify-toast';
-import $ from 'jquery';
+require("../store");
 
 const tasks = [
     {title: 'read a book', time: 90, isCompleted: false},
@@ -22,7 +22,7 @@ class App extends Component {
         return(
             <div className="mainContainer">
                 <Notifications />
-                <h3>Todo List</h3>
+                <h3 className="logo">Todo List</h3>
                 <CreateTodoItem tasks={this.state.tasks} createTask={this.createTask.bind(this)} />
                 <hr />
                 <TodoList tasks={ this.state.tasks } toggleTask={this.toggleTask.bind(this)} removeTask={this.removeTask.bind(this)} />

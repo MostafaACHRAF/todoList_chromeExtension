@@ -16,7 +16,7 @@ class TodoList extends Component {
     render() {
         return(
             <div>
-                <ul class="collapsible" data-collapsible="accordion">{ this.renderTodoItem() }</ul>
+                <ul className="collapsible" data-collapsible="accordion">{ this.renderTodoItem() }</ul>
             </div>
         );
     }

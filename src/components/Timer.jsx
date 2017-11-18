@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 
 class Timer extends Component {
 
@@ -10,7 +9,7 @@ class Timer extends Component {
             minutes: 0,
             secondes: 59,
             time: null,
-            isStarted: false
+            isStarted: false,
         }
     }
 
@@ -34,7 +33,7 @@ class Timer extends Component {
     renderTimer(time) {
         let hours = Math.floor(time / 60);
         let minutes = time % 60 === 0 ? time % 60 : time % 60 - 1;
-        let secondes = 59;
+        //let secondes = 59;
 
         this.setState({hours, minutes});
     }
@@ -52,6 +51,9 @@ class Timer extends Component {
         this.compteur = setInterval(() => this.runTimer(), 1000);
         this.setState({isStarted: true});
         this.props.handelTimerStatus(true, this.props.taskId);
+
+        
+        
     }
 
     stopTimer() {
@@ -64,17 +66,19 @@ class Timer extends Component {
         if (!this.props.taskCompleted) {
             if (this.state.isStarted === true) {
                 return(
-                    <a id={'pauseBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue" >
+                    <a id={'ctrlBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue ctrlBtn" >
                         <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Stop the timer" onClick={this.stopTimer.bind(this)}>pause</i>
                     </a>
                 );
             }
 
             return(
-                <a id={'startBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue pulse" onClick={this.startTimer.bind(this)} >
+                <a id={'ctrlBtn' + this.props.taskId} className="btn-floating btn-large waves-effect waves-light blue pulse ctrlBtn" onClick={this.startTimer.bind(this)} >
                     <i className="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Start the timer">play_arrow</i>
                 </a>
             );
+        } else {
+            
         }
     }
 
